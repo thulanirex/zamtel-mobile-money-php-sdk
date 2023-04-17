@@ -53,7 +53,7 @@ This project can be set up as a simple REST API without using any framework. A b
 
    The API is now running on http://localhost:8000. You can make GET requests to the following endpoints:
 
-    /zamtel-charge for the CollectPayment class, with the msisdn and amount parameters, for example:
+    /c2b-charge for the CollectPayment class, with the msisdn and amount parameters, for example:
    
    http://localhost:8000/c2b-charge?msisdn=26095xxxxxxx&amount=1654
 
