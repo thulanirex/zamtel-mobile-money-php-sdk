@@ -1,6 +1,6 @@
 ### Zamtel Mobile Money API Integration
 
-This repository contains PHP classes for integrating with the Zamtel Mobile Money API. It includes two classes: MobileMoneyController and BusinessToCustomer. Both classes provide methods for making charge requests to the API, with the BusinessToCustomer class also supporting business-to-customer transactions.
+This repository contains PHP classes for integrating with the Zamtel Mobile Money API. It includes two classes: CollectPayment and DisbursePayment. Both classes provide methods for making charge requests to the API, with the DisbursePayment class also supporting business-to-customer transactions.
 
 
 ### Getting Started
@@ -30,22 +30,22 @@ ZAMPAY_IDENTIFIER=your_identifier
 ZAMPAY_CREDENTIAL=your_credential
 
 ## Usage
-# To use the MobileMoneyController class:
+# To use the CollectPayment class:
 
-$mobileMoneyController = new MobileMoneyController();
-$response = $mobileMoneyController->zamtelChargeRequest($msisdn, $amount);
+$collectPayment = new CollectPayment();
+$response = $collectPayment->zamtelChargeRequest($msisdn, $amount);
 
-## To use the BusinessToCustomer class:
-$businessToCustomer = new BusinessToCustomer();
-$response = $businessToCustomer->zamtelChargeRequest($msisdn, $amount);
+## To use the DisbursePayment class:
+$disburse = new DisbursePayment();
+$response = $disburse->zamtelChargeRequest($msisdn, $amount);
 
 Replace $msisdn and $amount with the actual values for the mobile number and the transaction amount.
 
 ## Running the Project Locally as an API
 
-This project can be set up as a simple REST API without using any framework. A basic router is included to define routes for both the MobileMoneyController and BusinessToCustomer classes. Follow these steps to run it locally:
+This project can be set up as a simple REST API without using any framework. A basic router is included to define routes for both the CollectPayment and DisbursePayment classes. Follow these steps to run it locally:
 
-    1. Create a new file named api.php in the project's root directory. This file will handle API requests and routing.
+    1. I have created a file named api.php in the project's root directory. This file will handle API requests and routing.
 
     2. Open a terminal or command prompt and navigate to the project's root directory. Run the following command to start the built-in web server:
 
@@ -55,16 +55,16 @@ This project can be set up as a simple REST API without using any framework. A b
 
     /zamtel-charge for the CollectPayment class, with the msisdn and amount parameters, for example:
    
-   http://localhost:8000/zamtel-charge?msisdn=1234567890&amount=1654
+   http://localhost:8000/c2b-charge?msisdn=26095xxxxxxx&amount=1654
 
-   /b2c-charge for the BusinessToCustomer class, with the msisdn and amount parameters, for example:
+   /b2c-charge for the DisbursePayment class, with the msisdn and amount parameters, for example:
 
-   http://localhost:8000/b2c-charge?msisdn=1234567890&amount=1654
+   http://localhost:8000/b2c-charge?msisdn=26095xxxxxxx&amount=1
 
 
 ## Running Tests
 
-This project includes PHPUnit tests for the BusinessToCustomer and MobileMoneyController classes. Run the tests with the following command:
+This project includes PHPUnit tests for the DisbursePayment and CollectPayment classes. Run the tests with the following command:
 
 ./vendor/bin/phpunit
 
